@@ -1,0 +1,10 @@
+.Header-Item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 40px;
+}
+
+.Header-Item:first-child {
+    margin-left: 0;
+}

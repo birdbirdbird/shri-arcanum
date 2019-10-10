@@ -1,0 +1,6 @@
+.Dropdown {
+  display: flex;
+  cursor: pointer;
+  height: 100%;
+}
+

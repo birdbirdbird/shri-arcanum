@@ -1,0 +1,20 @@
+.Table-Item {
+    display: flex;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.Table-Item:last-child {
+    justify-items: end;
+    display: grid;
+} 
+
+
+
+@media only screen and ( max-width: 360px ) {
+    .Table-Item {
+        padding-right: 8px;
+    }
+  }

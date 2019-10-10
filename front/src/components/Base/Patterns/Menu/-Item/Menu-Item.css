@@ -1,0 +1,9 @@
+.Menu-Item_active_true {
+    border-bottom: 3px solid var(--color-border-active);
+}
+
+.Menu-Item {
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    margin-right: 32px;
+}

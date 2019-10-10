@@ -1,0 +1,36 @@
+.Theme {
+    --color-typo-primary: #000000;
+    --color-typo-secondary: #7F8285;
+    --color-typo-labels: #B8BEC3;
+    --color-typo-link: #1774E9;
+    --color-typo-counter: #999999;
+
+    --color-border-active:  #FF4F49;
+    --color-border-header: #F0F2F3;
+    --color-border-separator: #E5E5E5;
+    --color-border-separator-thin: #F2F2F2;
+
+    --color-background-details: #F5F5F5;
+
+    --size-typo-xs: 12px;
+    --size-typo-s: 13px;
+    --size-typo-m: 14px;
+    --size-typo-l: 16px;
+    --size-typo-xl: 24px;
+
+    --line-height-typo-xs: 20px;
+    --line-height-typo-s: 18px;
+    --line-height-typo-m: 20px;
+    --line-height-typo-l: 20px;
+    --line-height-typo-xl: 28px;
+
+    --size-typo-xs-icon: 12px;
+    --size-typo-s-icon: 13px;
+    --size-typo-m-icon: 14px;
+
+    --line-height-typo-xs-icon: 20px;
+    --line-height-typo-s-icon: 13px;
+    --line-height-typo-m-icon: 28px;
+
+    font-family: Sans-Serif;
+}

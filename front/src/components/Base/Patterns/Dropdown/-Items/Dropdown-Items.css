@@ -1,0 +1,25 @@
+.Dropdown-Items {
+    position: absolute;
+    top: 56px;
+    min-width: 266px;
+    margin-top: 1px;
+    background-color: #fff;
+    box-shadow: 2px 2px 20px var(--color-border-separator);
+    z-index: 1;
+    padding: 14px 22px;
+    display: none;
+}
+
+.Dropdown-Items_open_true {
+    display: block;
+}
+
+.Dropdown-Item {
+    padding-bottom: 16px;
+}
+
+.Dropdown-Item:last-child {
+    padding-bottom: 0;
+}
+
+  

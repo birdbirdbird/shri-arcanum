@@ -1,0 +1,7 @@
+.Text_view_firstLetter {
+  display: block !important;
+}
+
+.Text_view_firstLetter::first-letter {
+  color: var(--color-border-active)
+}

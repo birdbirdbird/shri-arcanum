@@ -1,0 +1,11 @@
+.Dropdown-Label{
+    display: flex;
+    align-items: center;
+}
+
+.Dropdown-Label_active_true {
+    border-bottom: 3px solid var(--color-border-active)
+}
+  
+
+  

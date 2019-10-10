@@ -1,0 +1,10 @@
+.Content {
+    margin: 0 32px;
+    flex-grow: 1;
+}
+
+@media only screen and ( max-width: 360px ) {
+    .Content {
+      margin: 0 16px;
+    }
+}
