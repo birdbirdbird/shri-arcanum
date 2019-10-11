@@ -1,6 +1,6 @@
 export function loadReposList() {
   return dispatch => {
-  return fetch("http://127.0.0.1:8000/api/repos")
+  return fetch("http://127.0.0.1:9000/api/repos")
     .then(res => res.json())
     .then(repos => {
       dispatch({

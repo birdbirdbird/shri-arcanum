@@ -23,4 +23,6 @@ app.use((err, req, res, next) => {
   res.json({ message: 'error :(' })
 })
 
-app.listen(8000)
+app.listen(9000)
+
+module.exports = app

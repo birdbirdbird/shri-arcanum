@@ -1,11 +1,12 @@
 const { exec, execFile } = require('child_process')
+const reposPath = (process.env.NODE_ENV === 'test') ? '../test_repos' : process.argv[2] || '../test_repos'
 
 module.exports = {
   get: {
     listRepos (req, res, next) {
       exec(`bash ${__dirname}/scripts/listRepos.sh`, {
-        cwd: process.argv[2]
-      }, (err, out) => {
+        cwd: reposPath
+      }, (err, out) => { 
         if (err) {
           next(err)
         } else {
@@ -16,7 +17,7 @@ module.exports = {
     listCommits (req, res, next) {
       const { repositoryId, commitHash } = req.params
       exec(`git log ${commitHash} --pretty="%H %ct"`, {
-        cwd: `${process.argv[2]}/${repositoryId}`
+        cwd: `${reposPath}/${repositoryId}`
       }, (err, out) => {
         if (err) {
           next(err)
@@ -35,7 +36,7 @@ module.exports = {
     diff (req, res, next) {
       const { repositoryId, commitHash } = req.params
       exec(`git show --pretty="format:%b" ${commitHash}`, {
-        cwd: `${process.argv[2]}/${repositoryId}`
+        cwd: `${reposPath}/${repositoryId}`
       }, (err, out) => {
         if (err) {
           next(err)
@@ -47,7 +48,7 @@ module.exports = {
     ls (req, res, next) {
       const { repositoryId } = req.params
       exec('git ls-tree master --name-only', {
-        cwd: `${process.argv[2]}/${repositoryId}`
+        cwd: `${reposPath}/${repositoryId}`
       }, (err, out) => {
         if (err) {
           next(err)
@@ -60,7 +61,7 @@ module.exports = {
       const { repositoryId, commitHash, path = '' } = req.params
       exec(`git ls-tree ${commitHash}:${path} | while read filename; do echo "$(git log -1 --format="%h|%s|%cn|%cr|" -- $(filename)) $filename"; done`, {
       // exec(`git ls-tree ${commitHash}:${path}`, {
-        cwd: `${process.argv[2]}/${repositoryId}/`
+        cwd: `${reposPath}/${repositoryId}/`
       }, (err, out) => {
         if (err) {
           next(err)
@@ -87,7 +88,7 @@ module.exports = {
       const { repositoryId, commitHash } = req.params
       const pathToFile = req.params['0']
       const log = execFile('git', ['show', `${commitHash}:${pathToFile}`], {
-        cwd: `${process.argv[2]}/${repositoryId}`
+        cwd: `${reposPath}/${repositoryId}`
       })
       log.stdout.on('data', data => res.send({ data: data })) // не успела доделать :(
       log.on('close', code => console.log('closed'))
@@ -96,7 +97,7 @@ module.exports = {
   delete: {
     deleteRepo (req, res, next) {
       const { repositoryId } = req.params
-      exec(`rm -rf ${process.argv[2]}/${repositoryId}`, (err, out) => {
+      exec(`rm -rf ${reposPath}/${repositoryId}`, (err, out) => {
         if (err) {
           next(err)
         } else {
@@ -109,9 +110,10 @@ module.exports = {
     downloadRepo (req, res, next) {
       const { repositoryId } = req.params
       const { url } = req.body
+      console.log(url)
       console.log('download started')
       exec(`git clone ${url} ${repositoryId}`, {
-        cwd: `${process.argv[2]}`
+        cwd: `${reposPath}`
       }, (err, out) => {
         if (err) {
           next(err)
